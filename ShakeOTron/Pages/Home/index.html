@@ -4,18 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shake-o-tron</title>
-    
+    <link rel="stylesheet" href="/Style/style.css">
 </head>
 <body>
     <div id="app">
-        {{test}}
+        {{testText}}
+        <h1 v-text="greetingText" id="welcome"></h1>
+
     </div>
     <script src="https://unpkg.com/vue@3.5.10/dist/vue.global.js"></script>
     <script>
         const App = {
             data () {
                 return {
-                    test: "Testing testing, hello?"
+                    testText: "Testing testing, hello?",
+                    greetingText: "Hello and welcome to shake-o-Tron"
+                }
+            },
+            methods: {
+                
+            },
+            components: {
+                'User-avatar':{
+                    template: ''
                 }
             }
         }

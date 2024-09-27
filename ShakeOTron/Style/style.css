@@ -1,3 +1,10 @@
  #app{
     
  }
+ #welcome {
+    font-size: xx-large;
+    color: rgb(102, 0, 139);
+ }
+ body {
+    background-color: rgb(50, 145, 188);
+ }
