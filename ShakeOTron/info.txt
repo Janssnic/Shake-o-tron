@@ -1,4 +1,4 @@
 kom ihåg o installera node.js
 För att köra en development server skriv:
-inne i shakeotron-app kör: npm run serv
+inne i shakeotron-app kör: npm run serve
 välj localhost
