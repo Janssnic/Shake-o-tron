@@ -5,10 +5,11 @@
         <img :src="drink.pic" alt="Drink image">
       </li>
     </ul>
-  </template>
+</template>
   
   <script>
-  import { apiResponse, exportDrinks } from '../Scripts/ApiDrink';
+  import { apiResponse, exportDrinks } from '../../../Scripts/ApiDrink';
+  
   
   export default {
     data() {
