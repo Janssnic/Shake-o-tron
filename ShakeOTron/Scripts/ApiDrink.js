@@ -1,7 +1,7 @@
 let drinksOfType = [];
 
 function apiResponse(alcType) {
-  alcType = "Vodka"
+  //alcType = "Vodka"
   const url = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=' + alcType
 
   fetch(url)
