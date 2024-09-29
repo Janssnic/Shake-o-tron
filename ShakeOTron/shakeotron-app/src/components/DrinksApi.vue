@@ -8,11 +8,18 @@
   </template>
   
   <script>
+  import { apiResponse, exportDrinks } from '../Scripts/ApiDrink';
+  
   export default {
     data() {
       return {
-        drinks: exportDrinks()
+        drinks: []
       }
+    },
+    mounted() {
+      apiResponse('Vodka').then(() => {
+        this.drinks = exportDrinks();
+      });
     }
   }
   </script>
