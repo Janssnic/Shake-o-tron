@@ -39,6 +39,15 @@ export default {
       getThisDrink(idDrink) {
         console.log(idDrink)
       }
+<<<<<<< HEAD
+=======
+    },
+    mounted() {
+    apiResponse('Vodka').then(() => {
+        this.drinks = exportDrinks();
+      });
+    }
+>>>>>>> a0d8789f3bbf72a7d84a17bde1281f0a3bdf156f
   }
 }
 
