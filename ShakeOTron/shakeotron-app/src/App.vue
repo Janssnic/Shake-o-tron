@@ -4,6 +4,8 @@
 <h1>Hellooo</h1>
 
 <DrinksApi></DrinksApi>
+<SobrietyCheck>
+</SobrietyCheck>
 
 </template>
 
@@ -12,13 +14,16 @@
 <script>
 import DrinksApi from './components/DrinksApi.vue';
 import Navigation from './components/Navigation.vue';
+import SobrietyCheck from './components/SobrietyCheck.vue';
+
 
 
 export default {
   name: 'App',
   components: {
     Navigation,
-    DrinksApi
+    DrinksApi,
+    SobrietyCheck
   }
 }
 </script>
