@@ -3,7 +3,7 @@
   <Navigation name="navigation menu" />
   <h1>Hellooo</h1>
 
-  <DrinksApi @likedDrink="addLikedDrink"></DrinksApi>
+  <DrinksApi @likedDrink="addLikedDrink" @testedDrink="addTestedDrink"></DrinksApi>
 
 </template>
 
@@ -22,7 +22,8 @@ export default {
   },
   data() {
     return {
-      likedDrinks: []
+      likedDrinks: [],
+      testedDrinks: []
     }
   },
   created() { //checkar om det finns liked drinks i localstorage och sparar dem i likeddrinks arrayn
@@ -34,6 +35,11 @@ export default {
       this.likedDrinks = []
     }
     console.log("stored drinks", this.likedDrinks)
+
+    const storedTested = localStorage.getItem("testedDrinks")
+    if (storedTested) {
+      this.testedDrinks = JSON.parse(storedTested)
+    }
   },
   methods: {
     addLikedDrink(drink) { //checkar om liked drink redan är liked och lägger den till arrayn av likedDrinks samt sparar i local storage
@@ -49,6 +55,14 @@ export default {
         localStorage.setItem('likedDrinks', JSON.stringify(this.likedDrinks))
         console.log("added", drink, " to liked drinks")
       }
+    },
+    addTestedDrink(drink) { //en array med 5 senaste testade drinks
+      if (this.testedDrinks.length >= 5) {
+        this.testedDrinks.shift() //deletar första item
+      }
+      this.testedDrinks.push(drink) //lägger till ny item
+      localStorage.setItem('testedDrinks', JSON.stringify(this.testedDrinks))
+      console.log("added", drink, " to tested drinks")
     }
   }
 }

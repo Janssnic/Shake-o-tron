@@ -5,7 +5,9 @@
     <ul>
       <li v-for="drink in drinks" :key="drink.id">
         {{ drink.strDrink }}
-        <img :src="drink.strDrinkThumb" alt="Drink image" @click="getThisDrink(drink.idDrink), likeDrink(drink)">
+        <img :src="drink.strDrinkThumb" alt="Drink image" @click="getThisDrink(drink.idDrink)">
+        <Button icon="pi pi-heart" severity="help" rounded aria-label="Favorite" @click="getThisDrink(drink.idDrink), likeDrink(drink)">Like</Button>
+        <Button icon="pi pi-heart" severity="help" rounded aria-label="Favorite" @click="getThisDrink(drink.idDrink), testDrink(drink)">Test</Button>
       </li>
     </ul>
 </template>
@@ -18,7 +20,7 @@ export default {
       searchQuery: '',
     };
   },
-  emits: ['likedDrink'],
+  emits: ['likedDrink', 'testedDrink'],
 
 
   methods: {
@@ -43,6 +45,10 @@ export default {
       likeDrink(drink) {
         //console.log(drink, "has been liked")
         this.$emit('likedDrink', drink)
+      },
+      testDrink(drink) {
+        //console.log(drink, "has been liked")
+        this.$emit('testedDrink', drink)
       }
   }
 }
