@@ -5,7 +5,7 @@
     <ul>
       <li v-for="drink in drinks" :key="drink.id">
         {{ drink.strDrink }}
-        <img :src="drink.strDrinkThumb" alt="Drink image" @click="getThisDrink(drink.idDrink)">
+        <img :src="drink.strDrinkThumb" alt="Drink image" @click="getThisDrink(drink.idDrink), likeDrink(drink)">
       </li>
     </ul>
 </template>
@@ -18,6 +18,7 @@ export default {
       searchQuery: '',
     };
   },
+  emits: ['likedDrink'],
 
 
   methods: {
@@ -38,6 +39,10 @@ export default {
       },
       getThisDrink(idDrink) {
         console.log(idDrink)
+      },
+      likeDrink(drink) {
+        //console.log(drink, "has been liked")
+        this.$emit('likedDrink', drink)
       }
   }
 }

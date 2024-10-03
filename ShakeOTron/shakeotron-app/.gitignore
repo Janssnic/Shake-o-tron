@@ -21,3 +21,21 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+
+
+
+min todo
+-saved cocktails
+    -en like knapp som uppdaterar staten
+    -sätt den i local storage
+
+    -skicka liked drink från apin ti app
+    -kålla om den e redan liked
+    -skicka spara till local storage
+    -skicka arrayn vidare till liked drinks
+    -fetcha dom från apin med id:n
+
+
+  <likedDrinks :likedDrinks="likedDrinks"></likedDrinks>
+
