@@ -1,5 +1,21 @@
 <template>
  <h1>{{ name }}</h1>
+ <div>
+<ul>
+  <p>drinks</p>
+</ul>
+<ul>
+  <p>profile</p>
+</ul>
+<ul>
+  <p>archive</p>
+</ul>
+  
+  
+  
+
+</div>
+
 </template>
 
 <script>
@@ -13,12 +29,23 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+div {
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  position: sticky;
+  bottom: 0;
+  overflow: hidden;
+  background-color: #333;
+}
 h3 {
   margin: 40px 0 0;
 }
 ul {
   list-style-type: none;
-  padding: 0;
+  padding: 1%;
 }
 li {
   display: inline-block;

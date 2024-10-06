@@ -1,10 +1,8 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <Navigation name="navigation menu" />
-  <h1>Hellooo</h1>
-
+  
   <DrinksApi @likedDrink="addLikedDrink" @testedDrink="addTestedDrink"></DrinksApi>
-
+  <Navigation name="" />
 </template>
 
 
@@ -75,6 +73,8 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  margin: -8px;    /* Fix this??? */
   margin-top: 60px;
+  padding: 0px;
 }
 </style>
