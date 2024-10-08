@@ -1,9 +1,9 @@
 <template>
-    <h1>{{ name }}</h1>
+    
     <div>
-   
-        
-   
+      <input type="text" placeholder="Username">
+      <input type="password" placeholder="password">
+      <button type="submit">Login</button>
    </div>
    
    </template>
@@ -11,8 +11,9 @@
    <script>
    
    export default {
-       name: 'Login',
-       props: ['name'],
+       mounted() {
+        
+       }
        
      }
    </script>
