@@ -1,8 +1,8 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
+  <NavigationComponent/>
   <LoginComponent/>
   <DrinksApi @likedDrink="addLikedDrink" @testedDrink="addTestedDrink"></DrinksApi>
-  <Navigation name="" />
+  
 </template>
 
 
@@ -10,14 +10,14 @@
 <script>
 import DrinksApi from './components/DrinksApi.vue';
 import LoginComponent from './components/LoginComponent.vue';
-import Navigation from './components/Navigation.vue';
+import NavigationComponent from './components/NavigationComponent.vue';
 
 
 export default {
   name: 'App',
   components: {
     LoginComponent,
-    Navigation,
+    NavigationComponent,
     DrinksApi
   },
   data() {
@@ -76,7 +76,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin: -8px;    /* Fix this??? */
-  margin-top: 60px;
+  margin-top: 0px;
   padding: 0px;
 }
 </style>
