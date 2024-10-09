@@ -1,6 +1,6 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  
+  <LoginComponent/>
   <DrinksApi @likedDrink="addLikedDrink" @testedDrink="addTestedDrink"></DrinksApi>
   <Navigation name="" />
 </template>
@@ -9,12 +9,14 @@
 
 <script>
 import DrinksApi from './components/DrinksApi.vue';
+import LoginComponent from './components/LoginComponent.vue';
 import Navigation from './components/Navigation.vue';
 
 
 export default {
   name: 'App',
   components: {
+    LoginComponent,
     Navigation,
     DrinksApi
   },
