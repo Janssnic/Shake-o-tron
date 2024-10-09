@@ -6,10 +6,18 @@
       <li v-for="drink in drinks" :key="drink.id">
         {{ drink.strDrink }}
         <img :src="drink.strDrinkThumb" alt="Drink image" @click="getThisDrink(drink.idDrink)">
-        <Button icon="pi pi-heart" severity="help" rounded aria-label="Favorite" @click="getThisDrink(drink.idDrink), likeDrink(drink)">Like</Button>
-        <Button icon="pi pi-heart" severity="help" rounded aria-label="Favorite" @click="getThisDrink(drink.idDrink), testDrink(drink)">Test</Button>
+        <div class="drinkInfo">
+          <ul>
+            <li v-for="info in SpecDrink" :key="info.id">
+              <span>{{ info }}</span>
+            </li>
+          </ul>
+        </div>
+        <Button icon="pi pi-heart" severity="help" rounded aria-label="Favorite" @click="likeDrink(drink)">Like</Button>
+        <Button icon="pi pi-heart" severity="help" rounded aria-label="Favorite" @click="testDrink(drink)">Test</Button>
       </li>
     </ul>
+    
 </template>
   
 <script>
@@ -18,6 +26,7 @@ export default {
     return {
       drinks: [],
       searchQuery: '',
+      SpecDrink: []
     };
   },
   emits: ['likedDrink', 'testedDrink'],
@@ -39,8 +48,19 @@ export default {
       searchDrinks() {
         this.getData(this.searchQuery)
       },
-      getThisDrink(idDrink) {
-        console.log(idDrink)
+      async getThisDrink(idDrink) {
+        const DrinkIdUrl = 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=' + idDrink
+        //console.log(DrinkIdUrl)
+        try {
+          let response = await fetch(DrinkIdUrl)
+          let data = await response.json()
+          this.SpecDrink = data.drinks
+          console.log(data)
+        } 
+        catch (error) {
+          console.log(error)
+        }
+
       },
       likeDrink(drink) {
         //console.log(drink, "has been liked")
@@ -54,3 +74,9 @@ export default {
 }
 
 </script>
+
+<style scoped>
+
+
+
+</style>
