@@ -24,7 +24,7 @@ export default {
   },
   data() {
     return {
-      isLoggedIn: false, //true = alltid loggad in, FIX LATER
+      isLoggedIn: true, //true = alltid loggad in och skippa login step, FIX LATER
     }
   },
   
@@ -54,5 +54,8 @@ export default {
   margin: -8px;    /* Fix this??? */
   margin-top: 0px;
   padding: 0px;
+}
+li {
+  list-style: none;
 }
 </style>
