@@ -2,13 +2,23 @@
   <div v-if ="!isLoggedIn">
   <LoginComponent @logIn ="logIn"/>
   </div>
-  <div v-if="isLoggedIn">
-    <NavigationComponent @navClicked="updatePage" @logIn ="logIn"/>
-    <DrinksApi @likedDrink="addLikedDrink" @testedDrink="addTestedDrink"></DrinksApi>
-    <LikedDrinks ref="likedDrinksComponent"/>
-  </div>
-  <div>
-    <SobrietyCheck/>
+    <div v-if="isLoggedIn">
+      <NavigationComponent @navClicked="navTo" @logIn ="logIn"/>
+      <div v-if='navState == "home"'>
+      <!-- Put Home component here -->
+       <h1>Really nice homepage comming</h1>
+      </div>
+      <div v-if='navState == "drinks"'>
+        <DrinksApi @likedDrink="addLikedDrink" @testedDrink="addTestedDrink"></DrinksApi>
+      </div>
+      <div v-if='navState == "account"'>
+        <!-- Account component here-->
+        {{ username }}
+      </div>
+      <div v-if='navState == "sobertest"'>
+        <SobrietyCheck/>
+      </div>
+      <LikedDrinks ref="likedDrinksComponent"/>
   </div>
 </template>
 
@@ -28,7 +38,8 @@ export default {
     NavigationComponent,
     DrinksApi,
     LikedDrinks,
-    SobrietyCheck
+    SobrietyCheck,
+
   },
   data() {
     return {
@@ -48,8 +59,10 @@ export default {
     logIn(login, username) {
       this.isLoggedIn = login
       this.username = username
-      console.log("App login changed" + this.isLoggedIn)
     },
+    navTo(page){
+      this.navState = page
+    }
   
 }
 }

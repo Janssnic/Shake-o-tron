@@ -30,16 +30,19 @@ export default {
     methods:{
       navHome(){
         console.log('Home clicked')
+        this.$emit('navClicked', "home")
       },
       navDrinks() {
         console.log('Drinks clicked')
+        this.$emit('navClicked', "drinks")
       },
       navAccount() {
         console.log('Account clicked')
-        console.log(JSON.parse(localStorage.getItem('user')))
+        this.$emit('navClicked', "account")
       },
       navSoberTest() {
         console.log('Sober-Test clicked')
+        this.$emit('navClicked', "sobertest")
       },
       logout() {
         this.$emit('logIn', false, "username?")
