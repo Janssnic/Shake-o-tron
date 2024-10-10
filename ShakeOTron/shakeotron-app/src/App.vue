@@ -1,8 +1,13 @@
 <template>
-  <NavigationComponent/>
-  <LoginComponent/>
+  <LoginComponent @loggingIn ="LogIn"/>
+<div v-if="isLoggedIn">
+  <NavigationComponent @navClicked="updatePage"/>
   <DrinksApi @likedDrink="addLikedDrink" @testedDrink="addTestedDrink"></DrinksApi>
   
+
+
+
+</div>
 </template>
 
 
@@ -22,6 +27,7 @@ export default {
   },
   data() {
     return {
+      isLoggedIn: false, //true = alltid loggad in, FIX LATER
       likedDrinks: [],
       testedDrinks: []
     }
@@ -63,6 +69,10 @@ export default {
       this.testedDrinks.push(drink) //lägger till ny item
       localStorage.setItem('testedDrinks', JSON.stringify(this.testedDrinks))
       console.log("added", drink, " to tested drinks")
+    },
+    LogIn(login) {
+      this.isLoggedIn = login
+      console.log("App login changed" + this.isLoggedIn)
     }
   }
 }

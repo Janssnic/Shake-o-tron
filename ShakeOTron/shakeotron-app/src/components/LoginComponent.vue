@@ -1,12 +1,12 @@
 <template>
   
-  <div id="login-container">
+  <div id="login-container" v-if="!IsLoggedIn">
     <form @submit.prevent="login" id="login-form">
-      <input type="text" id="username" placeholder="Username"/>
-      <input type="password" id="password" placeholder="Password"/>
-      <button type="submit">Login</button>
+      <input type="text" id="username" placeholder="Username" v-model="username"/>
+      <input type="password" id="password" placeholder="Password" v-model="password"/>
+      <button type="submit" @click="tryLogin">Login</button>
     </form>
-    <p v-if="error" class="error">{{ error }}</p>
+    <p v-if="error" class="error">{{ errormsg }}</p>
   </div>
 </template>
    
@@ -16,16 +16,28 @@
        data() {
         return {
           IsLoggedIn: false,
-          username: ' ',
-          password: ' ',
-          error: ' ',
+          username: '',
+          password: '',
+          error: false,
+          errormsg: 'There was an error when logging in, try "test, 1234"'
         }
        },
        methods: { 
-        login() {
-          if (this.username == 'admin' && this.password == 'admin') {
+        tryLogin() {
+          if (this.username == 'test' && this.password == '1234') {
             this.IsLoggedIn = true
+            this.$emit('loggingIn', this.IsLoggedIn)
           }
+          else {
+            this.displayError()
+          }
+          
+       },
+       displayError() {
+        this.error = true
+        setTimeout(() => {
+          this.error = false
+        }, 5000)
        }   
     }
    }
@@ -38,7 +50,7 @@
     padding: 0px;
     margin: 0px;
     display: flex;
-    flex-direction: row; 
+    flex-direction: column; 
     justify-content: center;
     align-items: center;
     bottom: 0;
@@ -52,7 +64,11 @@
     justify-content: space-evenly;
    }
    button {
-    flex-grow: 0;
+    background-color: rgb(139, 139, 139);
+   }
+
+   .error {
+    transition-duration: 1.5s;
    }
    
    </style>
