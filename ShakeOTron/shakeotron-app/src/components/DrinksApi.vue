@@ -6,8 +6,6 @@
     <li v-for="drink in drinks" :key="drink.idDrink">
       {{ drink.strDrink }}
       <img :src="drink.strDrinkThumb" alt="Drink image" @click="getThisDrink(drink.idDrink)">
-      
-      
       <div class="drinkInfo" v-if="selectedDrinkId === drink.idDrink">
         <ul>
           <li v-for="(info, index) in SpecDrink" :key="index">
