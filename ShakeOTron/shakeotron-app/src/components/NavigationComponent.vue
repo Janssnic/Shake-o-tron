@@ -12,6 +12,8 @@
       <li @click="navAccount">Account</li>
     
       <li @click="navSoberTest">Sober-Test</li>
+
+      <li @click="logout">tempLogoutButton</li>
     </ul>
   </div>
 </div>
@@ -34,9 +36,13 @@ export default {
       },
       navAccount() {
         console.log('Account clicked')
+        console.log(JSON.parse(localStorage.getItem('user')))
       },
       navSoberTest() {
-        console.log('SoberTest clicked')
+        console.log('Sober-Test clicked')
+      },
+      logout() {
+        this.$emit('logIn', false, "username?")
       }
     }
     

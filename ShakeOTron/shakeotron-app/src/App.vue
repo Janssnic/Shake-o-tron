@@ -1,7 +1,9 @@
 <template>
-  <LoginComponent @loggingIn ="LogIn"/>
+  <div v-if ="!isLoggedIn">
+  <LoginComponent @logIn ="logIn"/>
+  </div>
   <div v-if="isLoggedIn">
-    <NavigationComponent @navClicked="updatePage"/>
+    <NavigationComponent @navClicked="updatePage" @logIn ="logIn"/>
     <DrinksApi @likedDrink="addLikedDrink" @testedDrink="addTestedDrink"></DrinksApi>
     <LikedDrinks ref="likedDrinksComponent"/>
   </div>
@@ -25,6 +27,7 @@ export default {
   data() {
     return {
       isLoggedIn: true, //true = alltid loggad in och skippa login step, FIX LATER
+      username: '',
     }
   },
   
@@ -34,9 +37,10 @@ export default {
     },
     addTestedDrink(drink) {
       this.$refs.likedDrinksComponent.addTestedDrink(drink);
-  },
-  LogIn(login) {
+    },
+    logIn(login, username) {
       this.isLoggedIn = login
+      this.username = username
       console.log("App login changed" + this.isLoggedIn)
     },
   
@@ -58,4 +62,7 @@ export default {
 li {
   list-style: none;
 }
+.error {
+    color: red
+   }
 </style>
