@@ -7,6 +7,9 @@
     <DrinksApi @likedDrink="addLikedDrink" @testedDrink="addTestedDrink"></DrinksApi>
     <LikedDrinks ref="likedDrinksComponent"/>
   </div>
+  <div>
+    <SobrietyCheck/>
+  </div>
 </template>
 
 <script>
@@ -14,6 +17,8 @@ import DrinksApi from './components/DrinksApi.vue';
 import LoginComponent from './components/LoginComponent.vue';
 import NavigationComponent from './components/NavigationComponent.vue';
 import LikedDrinks from './components/LikedDrinks.vue';
+import SobrietyCheck from './components/SobrietyCheck.vue';
+
 
 
 export default {
@@ -22,12 +27,14 @@ export default {
     LoginComponent,
     NavigationComponent,
     DrinksApi,
-    LikedDrinks
+    LikedDrinks,
+    SobrietyCheck
   },
   data() {
     return {
       isLoggedIn: true, //true = alltid loggad in och skippa login step, FIX LATER
       username: '',
+      navState: 'home',
     }
   },
   
