@@ -1,16 +1,19 @@
 <template>
-  <NavigationComponent/>
-  <LoginComponent/>
-  <DrinksApi @likedDrink="addLikedDrink" @testedDrink="addTestedDrink"></DrinksApi>
-  
+  <div v-if ="!isLoggedIn">
+  <LoginComponent @logIn ="logIn"/>
+  </div>
+  <div v-if="isLoggedIn">
+    <NavigationComponent @navClicked="updatePage" @logIn ="logIn"/>
+    <DrinksApi @likedDrink="addLikedDrink" @testedDrink="addTestedDrink"></DrinksApi>
+    <LikedDrinks ref="likedDrinksComponent"/>
+  </div>
 </template>
-
-
 
 <script>
 import DrinksApi from './components/DrinksApi.vue';
 import LoginComponent from './components/LoginComponent.vue';
 import NavigationComponent from './components/NavigationComponent.vue';
+import LikedDrinks from './components/LikedDrinks.vue';
 
 
 export default {
@@ -18,53 +21,30 @@ export default {
   components: {
     LoginComponent,
     NavigationComponent,
-    DrinksApi
+    DrinksApi,
+    LikedDrinks
   },
   data() {
     return {
-      likedDrinks: [],
-      testedDrinks: []
+      isLoggedIn: true, //true = alltid loggad in och skippa login step, FIX LATER
+      username: '',
     }
   },
-  created() { //checkar om det finns liked drinks i localstorage och sparar dem i likeddrinks arrayn
-    const storedDrinks = localStorage.getItem("likedDrinks")
-    if (storedDrinks) {
-      this.likedDrinks = JSON.parse(storedDrinks)
-    }
-    else {
-      this.likedDrinks = []
-    }
-    console.log("stored drinks", this.likedDrinks)
-
-    const storedTested = localStorage.getItem("testedDrinks")
-    if (storedTested) {
-      this.testedDrinks = JSON.parse(storedTested)
-    }
-  },
+  
   methods: {
-    addLikedDrink(drink) { //checkar om liked drink redan är liked och lägger den till arrayn av likedDrinks samt sparar i local storage
-      let alreadyLiked = false
-      for (let i = 0; i < this.likedDrinks.length; i++)
-        if (this.likedDrinks[i].idDrink === drink.idDrink) {
-          alreadyLiked = true
-          break;
-        }
-
-      if (!alreadyLiked) {
-        this.likedDrinks.push(drink)
-        localStorage.setItem('likedDrinks', JSON.stringify(this.likedDrinks))
-        console.log("added", drink, " to liked drinks")
-      }
+    addLikedDrink(drink) {
+      this.$refs.likedDrinksComponent.addLikedDrink(drink);
     },
-    addTestedDrink(drink) { //en array med 5 senaste testade drinks
-      if (this.testedDrinks.length >= 5) {
-        this.testedDrinks.shift() //deletar första item
-      }
-      this.testedDrinks.push(drink) //lägger till ny item
-      localStorage.setItem('testedDrinks', JSON.stringify(this.testedDrinks))
-      console.log("added", drink, " to tested drinks")
-    }
-  }
+    addTestedDrink(drink) {
+      this.$refs.likedDrinksComponent.addTestedDrink(drink);
+    },
+    logIn(login, username) {
+      this.isLoggedIn = login
+      this.username = username
+      console.log("App login changed" + this.isLoggedIn)
+    },
+  
+}
 }
 </script>
 
@@ -79,4 +59,10 @@ export default {
   margin-top: 0px;
   padding: 0px;
 }
+li {
+  list-style: none;
+}
+.error {
+    color: red
+   }
 </style>
