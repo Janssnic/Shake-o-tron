@@ -13,7 +13,7 @@
   <lable id="signUpLink" @click="goSignUp">Don't have an account?</lable>
   </div>
   <div v-if="goSignup">
-  <SignUpComponent/>
+  <SignUpComponent @SignUpAccount ="signUpAccount"/>
   <label id="signUpLink" @click="goSignUp">Already have an account</label>
   </div>
 </template>
@@ -60,9 +60,15 @@ import SignUpComponent from './SignUpComponent.vue';
        goSignUp(){
         this.goSignup = !this.goSignup
         console.log("signup clicked")
-         }
-      }
-   }
+         },
+         signUpAccount(signup, username){
+          this.IsLoggedIn = signup
+          this.username = username
+          this.$emit('logIn', this.IsLoggedIn, this.username) 
+      },
+    }
+  }
+
    </script>
    <!-- Add "scoped" attribute to limit CSS to this component only -->
    <style scoped>

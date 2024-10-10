@@ -37,6 +37,7 @@
                 let user = [this.username, this.email, this.password, this.favCocktail]
                 let userData = JSON.stringify(user)
                 localStorage.setItem('user', userData)
+                this.$emit('signUpAccount', true, this.username)
 
             }
             else {

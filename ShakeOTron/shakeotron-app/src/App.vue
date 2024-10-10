@@ -60,7 +60,7 @@ export default {
       this.isLoggedIn = login
       this.username = username
     },
-    navTo(page){
+    navTo(page) {
       this.navState = page
     }
   
