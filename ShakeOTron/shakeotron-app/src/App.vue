@@ -18,6 +18,9 @@
       <div v-if='navState == "sobertest"'>
         <SobrietyCheck/>
       </div>
+      <div v-if='navState == "settings"'>
+        <SettingsPage/>
+      </div>
       <LikedDrinks ref="likedDrinksComponent"/>
   </div>
 </template>
@@ -28,6 +31,7 @@ import LoginComponent from './components/LoginComponent.vue';
 import NavigationComponent from './components/NavigationComponent.vue';
 import LikedDrinks from './components/LikedDrinks.vue';
 import SobrietyCheck from './components/SobrietyCheck.vue';
+import SettingsPage from './components/SettingsPage.vue';
 
 
 
@@ -39,6 +43,7 @@ export default {
     DrinksApi,
     LikedDrinks,
     SobrietyCheck,
+    SettingsPage,
 
   },
   data() {
