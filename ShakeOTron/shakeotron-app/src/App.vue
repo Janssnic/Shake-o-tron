@@ -1,4 +1,4 @@
-<template>
+<template >
   <div v-if ="!isLoggedIn">
   <LoginComponent @logIn ="logIn"/>
   </div>
@@ -90,4 +90,9 @@ li {
 .error {
     color: red
    }
+
+.dark  {
+    color: #fff !important;
+    background-color: #333;
+}
 </style>

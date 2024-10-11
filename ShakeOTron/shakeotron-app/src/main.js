@@ -8,7 +8,11 @@ import Button from "primevue/button"
 const app = createApp(App);
 
 app.use(PrimeVue, {
-    unstyled: true
+    unstyled: true,
+    options: {
+        prefix: 'p',
+        darkModeSelector: '.dark',
+    }
 });
 app.component('PrimeButton', Button);
 app.mount('#app')

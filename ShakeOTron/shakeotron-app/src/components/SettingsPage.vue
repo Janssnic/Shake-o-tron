@@ -13,9 +13,26 @@
 export default {
 methods: {
     toggleDark(ev) {
-        document.documentElement.classList.toggle("dark")
+      const isDark = document.documentElement.classList.toggle("dark")
       ev.target.classList.toggle("triggered")
+      console.log(isDark ? "dark mode enabled" : "dark mode disabled")
     }
 }
 }
 </script>
+
+<style scoped>
+li {
+  padding: 15px;
+  font-size: x-large;
+  color: #3b3b3b;
+  cursor: pointer;
+}
+
+.triggered {
+    color: #fff;
+    background-color: #333;
+}
+
+
+</style>
