@@ -1,3 +1,3 @@
 <template>
-    <h1>{{ name }}</h1>
+    <h1> Really nice homepage comming soon! </h1>
 </template>

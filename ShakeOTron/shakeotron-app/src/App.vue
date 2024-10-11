@@ -5,8 +5,7 @@
     <div v-if="isLoggedIn">
       <NavigationComponent @navClicked="navTo" @logIn ="logIn"/>
       <div v-if='navState == "home"'>
-      <!-- Put Home component here -->
-       <h1>Really nice homepage comming</h1>
+      <HomePage/>
       </div>
       <div v-if='navState == "drinks"'>
         <DrinksApi @likedDrink="addLikedDrink" @testedDrink="addTestedDrink"></DrinksApi>
@@ -28,7 +27,7 @@ import LoginComponent from './components/LoginComponent.vue';
 import NavigationComponent from './components/NavigationComponent.vue';
 import LikedDrinks from './components/LikedDrinks.vue';
 import SobrietyCheck from './components/SobrietyCheck.vue';
-
+import HomePage from './components/HomePage.vue';
 
 
 export default {
@@ -39,6 +38,7 @@ export default {
     DrinksApi,
     LikedDrinks,
     SobrietyCheck,
+    HomePage,
 
   },
   data() {
