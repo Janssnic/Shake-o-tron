@@ -1,8 +1,8 @@
 <template>
     <div>
-        <h2>Nykterhetstest</h2>
-        <p v-if="!gamestarted">Klicka på knappen då den blir grön</p>
-        <p v-if="!gamestarted && failed">Du e i fyllon</p>
+        <h2>Sobriety-check</h2>
+        <p v-if="gamestarted">Press the button when it turns green</p>
+    
 
         <button
         :disabled="!buttonEnabled"
@@ -10,12 +10,18 @@
         @click="checkReflex">Click me!</button>
 
         <p v-if="result">{{ result }}</p>
-        <button v-if="result" @click="resetGame">Prova igen</button>
+        <button v-if="result" @click="resetGame">Try again!</button>
+        <DancingRobot v-if="failed"></DancingRobot>
     </div>
 </template>
 
 <script>
+import DancingRobot from './DancingRobot.vue';
+
 export default {
+    components: {
+        DancingRobot
+    },
     data() {
         return {
             gamestarted: false,
@@ -38,19 +44,19 @@ export default {
                 this.buttonEnabled = true;
 
                 this.timeout = setTimeout(() => {
-                    this.result = "Du var för långsam"
+                    this.result = "Too slow, drink a glass of water or dance with me!"
                     this.failed = true;
                     this.buttonEnabled = false;
-                }, 2000);
+                }, 1000);
             }, waitTime);
         },
         checkReflex(){
             if(this.buttonEnabled){
                 clearTimeout(this.timeout);
-                this.result = "Du är nykter!";
+                this.result = "You are sober!";
                 this.buttonEnabled = false;
             } else {
-                this.result = "För tidigt, du är full!"
+                this.result = "Too early!"
                 this.failed = true;
             }
 

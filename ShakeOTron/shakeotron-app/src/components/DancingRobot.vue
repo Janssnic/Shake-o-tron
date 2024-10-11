@@ -1,6 +1,8 @@
 <template>
+    <button @click="startDance">Dance with me!</button>
     <div>
-        <button @click="startDance">Dansa med mig!</button>
+        
+        <img v-if="dance" src="../assets/dance.gif" alt="Dancing GIF">
     </div>
 </template>
 
