@@ -14,6 +14,8 @@
       <li @click="navSoberTest">Sober-Test</li>
 
       <li @click="logout">tempLogoutButton</li>
+
+      <li @click="navSettings">Settings</li>
     </ul>
   </div>
 </div>
@@ -46,7 +48,11 @@ export default {
       },
       logout() {
         this.$emit('logIn', false, "username?")
-      }
+      },
+      navSettings() {
+        console.log('Settings clicked')
+        this.$emit('navClicked', "settings")
+      },
     }
     
   }

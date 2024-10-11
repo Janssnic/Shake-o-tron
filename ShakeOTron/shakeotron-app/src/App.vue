@@ -1,4 +1,4 @@
-<template>
+<template >
   <div v-if ="!isLoggedIn">
   <LoginComponent @logIn ="logIn"/>
   </div>
@@ -17,6 +17,9 @@
       <div v-if='navState == "sobertest"'>
         <SobrietyCheck/>
       </div>
+      <div v-if='navState == "settings"'>
+        <SettingsPage/>
+      </div>
       <LikedDrinks ref="likedDrinksComponent"/>
   </div>
 </template>
@@ -27,6 +30,7 @@ import LoginComponent from './components/LoginComponent.vue';
 import NavigationComponent from './components/NavigationComponent.vue';
 import LikedDrinks from './components/LikedDrinks.vue';
 import SobrietyCheck from './components/SobrietyCheck.vue';
+import SettingsPage from './components/SettingsPage.vue';
 import HomePage from './components/HomePage.vue';
 
 
@@ -39,6 +43,7 @@ export default {
     LikedDrinks,
     SobrietyCheck,
     HomePage,
+    SettingsPage,
 
   },
   data() {
@@ -85,4 +90,9 @@ li {
 .error {
     color: red
    }
+
+.dark  {
+    color: #fff !important;
+    background-color: #333;
+}
 </style>
