@@ -4,24 +4,27 @@
   </div>
     <div v-if="isLoggedIn">
       <NavigationComponent @navClicked="navTo" @logIn ="logIn"/>
-      <div v-if='navState == "home"'>
+      <div v-if='navState === "home"'>
       <!-- Put Home component here -->
        <h1>Really nice homepage comming</h1>
       </div>
-      <div v-if='navState == "drinks"'>
+      <div v-if='navState === "drinks"'>
         <DrinksApi @likedDrink="addLikedDrink" @testedDrink="addTestedDrink"></DrinksApi>
       </div>
-      <div v-if='navState == "account"'>
+      <div v-if='navState === "likes"'>
+        <LikedDrinks ref="likedDrinksComponent"/>
+      </div>
+      <div v-if='navState === "account"'>
         <!-- Account component here-->
         {{ username }}
       </div>
-      <div v-if='navState == "sobertest"'>
+      <div v-if='navState === "sobertest"'>
         <SobrietyCheck/>
       </div>
-      <div v-if='navState == "settings"'>
+      <div v-if='navState === "settings"'>
         <SettingsPage/>
       </div>
-      <LikedDrinks ref="likedDrinksComponent"/>
+      
   </div>
 </template>
 
@@ -32,6 +35,7 @@ import NavigationComponent from './components/NavigationComponent.vue';
 import LikedDrinks from './components/LikedDrinks.vue';
 import SobrietyCheck from './components/SobrietyCheck.vue';
 import SettingsPage from './components/SettingsPage.vue';
+
 
 
 

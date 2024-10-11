@@ -1,11 +1,14 @@
 <template>
+  <div>
+    <h2>Liked drinks!</h2>
   <ul>
-    <li v-for="drink in drinks" :key="drink.id">
+    <li v-for="drink in likedDrinks" :key="drink.idDrink">
       {{ drink.strDrink }}
       <img :src="drink.strDrinkThumb" alt="Drink image" @click="getThisDrink(drink.idDrink), likeDrink(drink)">
+      <Button icon="pi pi-times" severity="danger" aria-label="Cancel" @click="removeDrink(drink)"> Remove</Button>
     </li>
   </ul>
-
+</div>
 </template>
 
 
@@ -13,8 +16,12 @@
 export default {
   data() {
     return {
+      drinks: [],
       likedDrinks: [],
-      testedDrinks: []
+      testedDrinks: [],
+      searchQuery: "",
+      selectedDrinkId: null,
+      SpecDrink: []
     }
   },
 
@@ -34,6 +41,41 @@ export default {
     }
   },
   methods: {
+    //modified av nicos kod, props to him!
+    async getData(alcType) {
+      const url = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=' + alcType
+      try {
+        let response = await fetch(url)
+        let data = await response.json()
+        this.drinks = data.drinks
+      }
+      catch (error) {
+        console.log(error);
+      }
+    },
+    searchDrinks() {
+      if (this.searchQuery.trim()) {
+        this.getData(this.searchQuery);
+      }
+    },
+    async getThisDrink(idDrink) {
+      const DrinkIdUrl = 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=' + idDrink
+      try {
+        let response = await fetch(DrinkIdUrl)
+        let data = await response.json()
+        this.SpecDrink = data.drinks
+        this.selectedDrinkId = idDrink
+      }
+      catch (error) {
+        console.log(error)
+      }
+    },
+
+
+
+
+
+
     addLikedDrink(drink) { //checkar om liked drink redan är liked och lägger den till arrayn av likedDrinks samt sparar i local storage
       let alreadyLiked = false
       for (let i = 0; i < this.likedDrinks.length; i++)
@@ -56,7 +98,11 @@ export default {
       localStorage.setItem('testedDrinks', JSON.stringify(this.testedDrinks))
       console.log("added", drink, " to tested drinks")
     }
-  }
+  },
+
+  
+
+
 }
 
 

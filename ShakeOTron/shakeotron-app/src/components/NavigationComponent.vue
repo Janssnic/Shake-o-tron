@@ -8,6 +8,8 @@
       <li @click="navHome">Home</li>
     
       <li @click="navDrinks">Drinks</li>
+
+      <li @click="navLikes">Likes</li>
     
       <li @click="navAccount">Account</li>
     
@@ -37,6 +39,10 @@ export default {
       navDrinks() {
         console.log('Drinks clicked')
         this.$emit('navClicked', "drinks")
+      },
+      navLikes() {
+        console.log('Likes clicked')
+        this.$emit('navClicked', "likes")
       },
       navAccount() {
         console.log('Account clicked')
