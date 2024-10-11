@@ -1,4 +1,14 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-createApp(App).mount('#app')
+import PrimeVue from 'primevue/config'
+import Button from "primevue/button"
+
+
+const app = createApp(App);
+
+app.use(PrimeVue, {
+    unstyled: true
+});
+app.component('PrimeButton', Button);
+app.mount('#app')
