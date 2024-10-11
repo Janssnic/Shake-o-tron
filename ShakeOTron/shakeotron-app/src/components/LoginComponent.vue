@@ -42,11 +42,17 @@ import SignUpComponent from './SignUpComponent.vue';
             this.IsLoggedIn = true
             this.$emit('logIn', this.IsLoggedIn, this.username)
           }
-          if (this.username == JSON.parse(localStorage.getItem('user'))[0] && this.password == JSON.parse(localStorage.getItem('user'))[2]) {
+          if (localStorage.getItem('user') !== null) {
+            if(this.username == JSON.parse(localStorage.getItem('user'))[0] && this.password == JSON.parse(localStorage.getItem('user'))[2]) {
             this.IsLoggedIn = true
             this.username = JSON.parse(localStorage.getItem('user'))[0]
             this.$emit('logIn', this.IsLoggedIn, this.username)
-          } 
+            }
+            else {
+              this.displayError()
+            } 
+          }
+            
           else {
             this.displayError()
           }

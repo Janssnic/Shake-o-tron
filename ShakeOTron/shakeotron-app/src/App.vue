@@ -4,6 +4,8 @@
   </div>
     <div v-if="isLoggedIn">
       <NavigationComponent @navClicked="navTo" @logIn ="logIn"/>
+      <div v-if='navState == "home"'>
+      <HomePage/>
       <div v-if='navState === "home"'>
       <!-- Put Home component here -->
        <h1>Really nice homepage comming</h1>
@@ -38,7 +40,6 @@ import SettingsPage from './components/SettingsPage.vue';
 
 
 
-
 export default {
   name: 'App',
   components: {
@@ -47,6 +48,7 @@ export default {
     DrinksApi,
     LikedDrinks,
     SobrietyCheck,
+    HomePage,
     SettingsPage,
 
   },
