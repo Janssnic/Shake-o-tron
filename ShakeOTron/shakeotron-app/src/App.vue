@@ -12,7 +12,7 @@
         <DrinksApi @likedDrink="addLikedDrink" @testedDrink="addTestedDrink"></DrinksApi>
       </div>
 
-      <div v-if='navState === "likes"'>
+      <div v-show='navState === "likes"'>
         <LikedDrinks ref="likedDrinksComponent"/>
       </div>
 
@@ -100,8 +100,8 @@ li {
     color: red
    }
 
-.dark  {
+.dark, .dark * /* targetar både class dark och alla barnelement av klassen */ {
     color: #fff !important;
-    background-color: #333;
+    background-color: #333 !important;
 }
 </style>

@@ -12,14 +12,25 @@
 <script>
 export default {
 methods: {
-    toggleDark(ev) {
+    toggleDark() {
       const isDark = document.documentElement.classList.toggle("dark")
-      ev.target.classList.toggle("triggered")
+      
       console.log(isDark ? "dark mode enabled" : "dark mode disabled")
+      console.log('Dark mode toggled:', document.documentElement.classList);
     }
 }
 }
 </script>
+
+
+<style>
+.triggered {
+  color: #fff;
+  background-color: #333;
+}
+
+</style>
+
 
 <style scoped>
 li {
@@ -29,10 +40,7 @@ li {
   cursor: pointer;
 }
 
-.triggered {
-    color: #fff;
-    background-color: #333;
-}
+
 
 
 </style>

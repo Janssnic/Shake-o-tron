@@ -35,8 +35,8 @@
         </ul>
       </div>
       
-      <Button icon="pi pi-heart" severity="help" rounded aria-label="Favorite" @click="likeDrink(drink)">Like</Button>
-      <Button icon="pi pi-heart" severity="help" rounded aria-label="Favorite" @click="testDrink(drink)">Test</Button>
+      <PrimeButton label="Like" severity="success" @click="likeDrink(drink)"></PrimeButton>
+      <PrimeButton label="Test" severity="help"  @click="testDrink(drink)"></PrimeButton>
     </li>
   </ul>
 </template>

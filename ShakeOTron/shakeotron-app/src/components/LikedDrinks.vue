@@ -5,7 +5,7 @@
     <li v-for="drink in likedDrinks" :key="drink.idDrink">
       {{ drink.strDrink }}
       <img :src="drink.strDrinkThumb" alt="Drink image" @click="getThisDrink(drink.idDrink), likeDrink(drink)">
-      <Button icon="pi pi-times" severity="danger" aria-label="Cancel" @click="removeDrink(drink)"> Remove</Button>
+      <PrimeButton label="Dislike" severity="danger" aria-label="Cancel" @click="removeDrink(drink)"></PrimeButton>
     </li>
   </ul>
 </div>
@@ -90,6 +90,15 @@ export default {
         console.log("added", drink, " to liked drinks")
       }
     },
+    removeDrink(removedDrink) {
+      this.likedDrinks = this.likedDrinks.filter(drink => drink.idDrink !== removedDrink.idDrink) //checkar varje drink om id:n matchar och deletar ifall det är samma
+      localStorage.setItem('likedDrinks', JSON.stringify(this.likedDrinks))
+      console.log("deleted", removedDrink, " from liked drinks")
+    },
+
+
+
+
     addTestedDrink(drink) { //en array med 5 senaste testade drinks
       if (this.testedDrinks.length >= 5) {
         this.testedDrinks.shift() //deletar första item
@@ -100,7 +109,7 @@ export default {
     }
   },
 
-  
+
 
 
 }
