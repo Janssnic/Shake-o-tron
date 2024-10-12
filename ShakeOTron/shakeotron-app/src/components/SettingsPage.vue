@@ -1,6 +1,6 @@
 <template>
     <ul>
-        <li>Account</li>
+        <li @click="navAccount">Account</li>
         <li>Notifications</li>
         <li @click="toggleDark">Appearance</li>
         <li>Privacy</li>
@@ -17,7 +17,11 @@ methods: {
       
       console.log(isDark ? "dark mode enabled" : "dark mode disabled")
       console.log('Dark mode toggled:', document.documentElement.classList);
-    }
+    },
+    navAccount() {
+        console.log('Account clicked')
+        this.$emit('navClicked', "account")
+}
 }
 }
 </script>

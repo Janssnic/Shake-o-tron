@@ -26,7 +26,7 @@
       </div>
 
       <div v-if='navState === "settings"'>
-        <SettingsPage/>
+        <SettingsPage @navClicked="navTo"/>
       </div>
    
   </div>
