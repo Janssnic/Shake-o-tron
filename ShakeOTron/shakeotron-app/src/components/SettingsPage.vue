@@ -1,6 +1,6 @@
 <template>
     <ul>
-        <li @click="navAccount">Account</li>
+        
         <li>Notifications</li>
         <li @click="toggleDark">Appearance</li>
         <li>Privacy</li>
@@ -18,11 +18,7 @@ methods: {
       console.log(isDark ? "dark mode enabled" : "dark mode disabled")
       console.log('Dark mode toggled:', document.documentElement.classList);
     },
-    navAccount() {
-        console.log('Account clicked')
-        this.$emit('navClicked', "account")
-}
-}
+  }
 }
 </script>
 
@@ -38,11 +34,14 @@ methods: {
 
 <style scoped>
 li {
-  padding: 15px;
+  padding: 10px;
   font-size: x-large;
   color: #3b3b3b;
   cursor: pointer;
 }
+li:hover {
+  color: #0080ff;
+} 
 
 
 

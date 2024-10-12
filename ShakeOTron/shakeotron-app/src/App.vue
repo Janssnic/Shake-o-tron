@@ -17,16 +17,12 @@
       </div>
 
       <div v-if='navState === "account"'>
-        <!-- Account component here-->
+        <AccountComponent @logIn ="logIn"/>
         {{ username }}
       </div>
 
       <div v-if='navState === "sobertest"'>
         <SobrietyCheck/>
-      </div>
-
-      <div v-if='navState === "settings"'>
-        <SettingsPage @navClicked="navTo"/>
       </div>
    
   </div>
@@ -38,8 +34,8 @@ import LoginComponent from './components/LoginComponent.vue';
 import NavigationComponent from './components/NavigationComponent.vue';
 import LikedDrinks from './components/LikedDrinks.vue';
 import SobrietyCheck from './components/SobrietyCheck.vue';
-import SettingsPage from './components/SettingsPage.vue';
 import HomePage from './components/HomePage.vue';
+import AccountComponent from './components/AccountComponent.vue';
 
 
 
@@ -52,7 +48,7 @@ export default {
     LikedDrinks,
     SobrietyCheck,
     HomePage,
-    SettingsPage,
+    AccountComponent
 
   },
   data() {

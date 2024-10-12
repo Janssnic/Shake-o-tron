@@ -15,9 +15,6 @@
     
       <li @click="navSoberTest">Sober-Test</li>
 
-      <li @click="logout">tempLogoutButton</li>
-
-      <li @click="navSettings">Settings</li>
     </ul>
   </div>
 </div>
