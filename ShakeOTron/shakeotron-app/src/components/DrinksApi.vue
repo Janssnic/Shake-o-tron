@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input type="text" v-model="searchQuery" @keyup.enter="searchDrinks">
+    <input class="input-box" type="text" v-model="searchQuery" @keyup.enter="searchDrinks">
   </div>
   <ul>
     <li v-for="drink in drinks" :key="drink.idDrink">
@@ -90,5 +90,7 @@ export default {
 </script>
 
 <style scoped>
-/* Your scoped styles */
+div input {
+  margin: 30px;
+}
 </style>
