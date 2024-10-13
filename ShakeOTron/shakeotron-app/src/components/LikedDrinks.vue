@@ -7,7 +7,7 @@
       <li v-for="drink in likedDrinks" :key="drink.idDrink">
         {{ drink.strDrink }}
         <img :src="drink.strDrinkThumb" alt="Drink image">
-        <PrimeButton label="Dislike" severity="danger" aria-label="Cancel" @click="removeDrink(drink)"></PrimeButton>
+        <PrimeButton class="red-button" label="Dislike" severity="danger" aria-label="Cancel" @click="removeDrink(drink)"></PrimeButton>
       </li>
     </ul>
   </div>
@@ -18,7 +18,7 @@
       <li v-for="drink in testedDrinks" :key="drink.idDrink">
         {{ drink.strDrink }}
         <img :src="drink.strDrinkThumb" alt="Drink image">
-        <PrimeButton label="Like" severity="success" aria-label="Cancel" @click="addLikedDrink(drink)"></PrimeButton>
+        <PrimeButton class="green-button" label="Like" severity="success" aria-label="Cancel" @click="addLikedDrink(drink)"></PrimeButton>
       </li>
     </ul>
   </div>

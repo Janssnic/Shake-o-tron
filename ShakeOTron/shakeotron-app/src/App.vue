@@ -97,7 +97,15 @@ li {
    }
 
 .dark, .dark * /* targetar både class dark och alla barnelement av klassen */ {
-    color: #fff !important;
-    background-color: #333 !important;
+color: #fff !important;
+    
 }
+   
+.dark .input-box {
+  background-color: #535353 !important;
+}
+
+
+
+
 </style>
