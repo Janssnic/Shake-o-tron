@@ -1,14 +1,28 @@
 <template>
-  <div>
+
+  <SelectButton class="selectButton" :options="viewOptions" v-model="selectedView" optionLabel="label" optionValue="value"></SelectButton>
+  <div v-if='selectedView === "liked"'>
     <h2>Liked drinks!</h2>
-  <ul>
-    <li v-for="drink in likedDrinks" :key="drink.idDrink">
-      {{ drink.strDrink }}
-      <img :src="drink.strDrinkThumb" alt="Drink image" @click="getThisDrink(drink.idDrink), likeDrink(drink)">
-      <PrimeButton label="Dislike" severity="danger" aria-label="Cancel" @click="removeDrink(drink)"></PrimeButton>
-    </li>
-  </ul>
-</div>
+    <ul>
+      <li v-for="drink in likedDrinks" :key="drink.idDrink">
+        {{ drink.strDrink }}
+        <img :src="drink.strDrinkThumb" alt="Drink image">
+        <PrimeButton label="Dislike" severity="danger" aria-label="Cancel" @click="removeDrink(drink)"></PrimeButton>
+      </li>
+    </ul>
+  </div>
+
+  <div v-if='selectedView === "tested"'>
+    <h2>Tested drinks!</h2>
+    <ul>
+      <li v-for="drink in testedDrinks" :key="drink.idDrink">
+        {{ drink.strDrink }}
+        <img :src="drink.strDrinkThumb" alt="Drink image">
+        <PrimeButton label="Like" severity="success" aria-label="Cancel" @click="addLikedDrink(drink)"></PrimeButton>
+      </li>
+    </ul>
+  </div>
+
 </template>
 
 
@@ -21,7 +35,16 @@ export default {
       testedDrinks: [],
       searchQuery: "",
       selectedDrinkId: null,
-      SpecDrink: []
+      SpecDrink: [],
+
+
+
+      viewOptions: [
+        { label: "Liked drinks", value: "liked" },
+        { label: "Tested drinks", value: "tested" }
+      ],
+
+      selectedView: "liked",
     }
   },
 
@@ -41,6 +64,11 @@ export default {
     }
   },
   methods: {
+
+
+
+
+
     //modified av nicos kod, props to him!
     async getData(alcType) {
       const url = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=' + alcType
@@ -116,3 +144,11 @@ export default {
 
 
 </script>
+
+<style scoped>
+.selectButton {
+  padding: 15px;
+  padding-bottom: 0px;
+}
+
+</style>

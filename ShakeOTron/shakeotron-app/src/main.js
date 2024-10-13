@@ -4,6 +4,7 @@ import App from './App.vue'
 import PrimeVue from 'primevue/config'
 import Button from "primevue/button"
 import Aura from '@primevue/themes/aura';
+import SelectButton from 'primevue/selectbutton';
 
 
 const app = createApp(App);
@@ -20,4 +21,5 @@ app.use(PrimeVue, {
     }
  });
 app.component('PrimeButton', Button);
+app.component('SelectButton', SelectButton);
 app.mount('#app')
