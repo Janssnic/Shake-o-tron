@@ -12,8 +12,8 @@
             
             <p>Your favourite cocktail is: </p>
             <p>{{ favCocktail }}</p>
-        </div>
-        <div id="right-container">
+            </div>
+            <div id="right-container">
             <button @click="logout">Logout</button>
             <SettingsPage/>
         </div>
