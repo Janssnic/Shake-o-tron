@@ -90,5 +90,7 @@ export default {
 </script>
 
 <style scoped>
-/* Your scoped styles */
+div input {
+  margin: 30px;
+}
 </style>
