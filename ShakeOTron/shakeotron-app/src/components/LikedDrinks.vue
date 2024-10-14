@@ -162,6 +162,7 @@ export default {
 }
 
 .drink-name {
-  padding-top: 5px;
+  padding: 20px;
+  padding-bottom: 0px;
 }
 </style>
