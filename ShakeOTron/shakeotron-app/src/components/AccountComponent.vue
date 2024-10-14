@@ -1,20 +1,38 @@
 <template>
     <div id="account-container">
         <div id="left-container">
-            <div>
+            <h2>Profile</h2>
             <p>Username: {{ username }}</p>
+            <div>
             <input type="text" placeholder="change username">
+            <button>save</button>
             </div>
             
-            <div>
             <p>Email: {{ email }}</p>
+            <div>
+            <input type="text" placeholder="change email">
+            <button>save</button>
             </div>
             
             <p>Your favourite cocktail is: </p>
-            <p>{{ favCocktail }}</p>
+            <p id="favourite-cocktail">{{ favCocktail }}</p>
+            <div>
+            <input type="text" placeholder="new favourite?">
+            <button>save</button>
+            </div>
+            <p class="link" @click="passwordChange = !passwordChange">change password?</p>
+            <div v-if="passwordChange" id="password-container">
+                <p>old password</p>
+                <input type="password" placeholder="old password">
+                <p>new password</p>
+                <input type="password" placeholder="new password">
+                <p>confirm new password</p>
+                <input type="password" placeholder="confirm new password">
+                <button>save</button>
+            </div>
             </div>
             <div id="right-container">
-            <button @click="logout">Logout</button>
+            <button @click="logout" id="logout-button">Logout</button>
             <SettingsPage/>
         </div>
     </div>
@@ -32,7 +50,8 @@
                 username: '',
                 password: '',
                 email: '',
-                favCocktail: 'home-made Apple Wine',
+                favCocktail: '',
+                passwordChange: true,
             }
         },
         mounted() {
@@ -41,11 +60,17 @@
                 this.email = JSON.parse(localStorage.getItem('user'))[1]
                 this.password = JSON.parse(localStorage.getItem('user'))[2]
                 this.favCocktail = JSON.parse(localStorage.getItem('user'))[3]
+                if (this.favCocktail == !null) {
+                    this.favCocktail = 'Home-made Apple Wine'
+                }
             }
         },
         methods: {
             logout() {
                 this.$emit('logIn', false, "username?")
+            },
+            changePassword() {
+
             }
         }
     }
@@ -62,19 +87,39 @@ li {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: baseline;
 }
 #left-container{
     padding: 15px;
-}
-button {
-    margin-top: 20px;
-    margin-right: 50px;
+    margin-left: 20px;
 }
 #right-container {
     display: flex;
     flex-direction: column;
     align-items: end;
     justify-content: center;
+}
+#logout-button {
+    margin-right: 50px;
+}
+input {
+    margin-right: 10px;
+}
+#favourite-cocktail {
+    color: green;
+}
+.link {
+    cursor: pointer;
+    color: #0080ff;
+}
+#password-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#left-container p {
+    margin: 5px;
+    width: fit-content;
 }
 
 
