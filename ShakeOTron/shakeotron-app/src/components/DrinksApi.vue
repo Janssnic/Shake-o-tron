@@ -1,7 +1,74 @@
 <template>
-  <div>
-    <input class="input-box" type="text" v-model="searchQuery" @keyup.enter="searchDrinks">
-  </div>
+  <div class="radioMeny">
+    <div class="radioItem">
+      <input type="radio" id="vodka" value="Vodka" v-model="searchQuery" @change="searchDrinks">
+      <label for="vodka">Vodka </label>
+    </div>  
+    <div class="radioItem">  
+      <input type="radio" id="gin" value="Gin" v-model="searchQuery" @change="searchDrinks">
+      <label for="gin">Gin </label>
+    </div>  
+    <div class="radioItem">  
+        <input type="radio" id="rum" value="Rum" v-model="searchQuery" @change="searchDrinks">
+      <label for="rum">Rum </label>
+    </div>
+    <div class="radioItem">  
+        <input type="radio" id="Tequila" value="Tequila" v-model="searchQuery" @change="searchDrinks">
+      <label for="Tequila">Tequila </label>
+    </div>  
+    <div class="radioItem">  
+        <input type="radio" id="Whiskey" value="Whiskey" v-model="searchQuery" @change="searchDrinks">
+      <label for="Whiskey">Whiskey </label>
+    </div>  
+    <div class="radioItem">  
+        <input type="radio" id="Cognac" value="Cognac" v-model="searchQuery" @change="searchDrinks">
+      <label for="Cognac">Cognac </label>
+    </div>  
+    <div class="radioItem">  
+        <input type="radio" id="beer" value="Beer" v-model="searchQuery" @change="searchDrinks">
+      <label for="beer">Beer </label>
+     </div>  
+    <div class="radioItem">  
+        <input type="radio" id="Lager" value="Lager" v-model="searchQuery" @change="searchDrinks">
+      <label for="Lager">Lager </label>
+    </div>  
+    <div class="radioItem">  
+        <input type="radio" id="Ginger Beer" value="Ginger Beer" v-model="searchQuery" @change="searchDrinks">
+      <label for="Ginger Beer">Ginger Beer </label>
+     </div>  
+    <div class="radioItem">  
+        <input type="radio" id="Cider" value="Cider" v-model="searchQuery" @change="searchDrinks">
+      <label for="Cider">Cider </label>
+     </div>  
+    <div class="radioItem">  
+        <input type="radio" id="Wine" value="Wine" v-model="searchQuery" @change="searchDrinks">
+      <label for="Wine">Wine </label>
+    </div>  
+    <div class="radioItem">  
+        <input type="radio" id="Champagne" value="Champagne" v-model="searchQuery" @change="searchDrinks">
+      <label for="Champagne">Champagne </label>
+    </div>  
+    <div class="radioItem">  
+        <input type="radio" id="Peach schnapps" value="Peach schnapps" v-model="searchQuery" @change="searchDrinks">
+      <label for="Peach schnapps">Peach schnapps </label>
+    </div>  
+    <div class="radioItem">  
+        <input type="radio" id="Blue Curacao" value="Blue Curacao" v-model="searchQuery" @change="searchDrinks">
+      <label for="Blue Curacao">Blue Curacao </label>
+    </div>
+    <div class="radioItem">  
+        <input type="radio" id="Triple sec " value="Triple sec " v-model="searchQuery" @change="searchDrinks">
+      <label for="Triple sec ">Triple sec  </label>
+    </div>  
+    <div class="radioItem">  
+        <input type="radio" id="Malibu rum" value="Malibu rum" v-model="searchQuery" @change="searchDrinks">
+      <label for="Malibu rum">Malibu rum </label>
+    </div> 
+    <div class="radioItem">  
+        <input type="radio" id="Amaretto" value="Amaretto" v-model="searchQuery" @change="searchDrinks">
+      <label for="Amaretto">Amaretto </label>
+    </div>  
+    </div>
   <div class="drinkContainer">
   <ul>
     <li v-for="drink in drinks" :key="drink.idDrink">
@@ -123,6 +190,29 @@ li {
   width: fit-content;
   max-width: 30vw;
 }
+.radioMeny {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100vh;
+  background-color: #f0f0f0; 
+  padding: 20px;
+  border-right: 1px solid #ddd; 
+}
 
+.radioItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.radioItem input[type="radio"] {
+  margin-right: 10px;
+}
+
+.radioItem label {
+  margin-bottom: 0;
+}
 
 </style>
