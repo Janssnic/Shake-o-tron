@@ -33,7 +33,7 @@ import SignUpComponent from './SignUpComponent.vue';
           username: '',
           password: '',
           error: false,
-          errormsg: 'There was an error when logging in, try "test, 1234"'
+          errormsg: 'There was an error when logging in, try "test, 1234" or sign up!'
         }
        },
        methods: { 
