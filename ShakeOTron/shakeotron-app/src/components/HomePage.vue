@@ -37,6 +37,22 @@
     </div>
 
 </template>
+
+<script>
+export default {
+        methods: {
+            speak(){
+                const message = new SpeechSynthesisUtterance("Welcome to shake-o-tron")
+                message.lang = "en-US";
+                window.speechSynthesis.speak(message);
+            }
+        },
+       mounted(){
+        this.speak();
+       }
+};
+</script>
+
 <style scoped>
 h2 {
     margin-bottom: 80px;

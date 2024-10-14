@@ -44,21 +44,27 @@ export default {
                 this.buttonEnabled = true;
 
                 this.timeout = setTimeout(() => {
-                    this.result = "Too slow, drink a glass of water or dance with me!"
+                    this.result = "Too slow, drink a glass of water and dance with me!"
                     this.failed = true;
                     this.buttonEnabled = false;
+                    this.speak();
                 }, 1000);
             }, waitTime);
         },
         checkReflex(){
-            if(this.buttonEnabled){
+            if(this.buttonColor == "green" ){
                 clearTimeout(this.timeout);
                 this.result = "You are sober!";
                 this.buttonEnabled = false;
+                this.speakWin();
             } else {
                 this.result = "Too early!"
                 this.failed = true;
+                this.speak();
+                
             }
+
+            this.buttonEnabled = false;
 
         },
         resetGame(){
@@ -67,6 +73,16 @@ export default {
             this.result = "";
             this.startGame();
         },
+        speak(){
+            const message = new SpeechSynthesisUtterance("You are drunk, drink a glass of water and dance with me!");
+            message.lang = "en-US";
+            window.speechSynthesis.speak(message);
+        },
+        speakWin(){
+            const message = new SpeechSynthesisUtterance("Lucky you, have another drink!");
+            message.lang = "en-US";
+            window.speechSynthesis.speak(message);
+        }
     },
     mounted(){
         this.startGame();
