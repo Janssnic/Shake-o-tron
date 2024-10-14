@@ -2,18 +2,25 @@
   <div>
     <input class="input-box" type="text" v-model="searchQuery" @keyup.enter="searchDrinks">
   </div>
+  <div class="drinkContainer">
   <ul>
     <li v-for="drink in drinks" :key="drink.idDrink">
-      {{ drink.strDrink }}
-      <img :src="drink.strDrinkThumb" alt="Drink image" @click="getThisDrink(drink.idDrink)">
+      <!-- {{ drink.strDrink }} -->
+      <img :src="drink.strDrinkThumb" alt="Drink image" @click="getThisDrink(drink.idDrink)" class="drinkImage">
+      <div>
+      <PrimeButton label="Like" severity="success" @click="likeDrink(drink)"></PrimeButton>
+      <PrimeButton label="Test" severity="help"  @click="testDrink(drink)"></PrimeButton>
+    </div>
       <div class="drinkInfo" v-if="selectedDrinkId === drink.idDrink">
         <ul>
-          <li v-for="(info, index) in SpecDrink" :key="index">
-            <span>Name: {{ info.strDrink }}</span>
+          <li v-for="(info, index) in SpecDrink" :key="index" class='aDrink'>
+            <span><b>Name: </b>{{ info.strDrink }}</span>
             <br>
-            <span>Glass: {{ info.strGlass }}</span>
+            <span><b>Glass: </b>{{ info.strGlass }}</span>
             <br>
-            <span>Instructions: {{ info.strInstructions }}</span>
+            <span><b>Instructions: </b>{{ info.strInstructions }}</span>
+            <br>
+            <span><b>Ingredients: </b></span>
             <br>
             <span v-if="info.strIngredient1">{{ info.strIngredient1}} {{ info.strMeasure1 }} <br></span>
             <span v-if="info.strIngredient2">{{ info.strIngredient2}} {{ info.strMeasure2 }} <br></span>
@@ -34,11 +41,10 @@
           </li>
         </ul>
       </div>
-      
-      <PrimeButton label="Like" severity="success" @click="likeDrink(drink)"></PrimeButton>
-      <PrimeButton label="Test" severity="help"  @click="testDrink(drink)"></PrimeButton>
+    
     </li>
   </ul>
+</div>
 </template>
 
 <script>
@@ -91,6 +97,32 @@ export default {
 
 <style scoped>
 div input {
-  margin: 30px;
+  margin: 0;
 }
+.drinkContainer{
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
+ul {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+li {
+  width: fit-content;
+}
+.drinkImage{
+  width: 30vw;
+  height: auto;
+  
+}
+.drinkInfo{
+  text-align: left;
+  width: fit-content;
+  max-width: 30vw;
+}
+
+
 </style>

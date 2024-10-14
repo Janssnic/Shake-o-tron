@@ -102,8 +102,7 @@ li {
   cursor: pointer;
 }
 li:hover{
-  background-color: rgb(126, 126, 252);
-  transition-duration: 1000ms;
+  color: #0080ff;
   
 }
 

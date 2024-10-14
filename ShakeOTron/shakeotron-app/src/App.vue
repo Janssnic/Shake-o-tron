@@ -18,7 +18,6 @@
 
       <div v-if='navState === "account"'>
         <AccountComponent @logIn ="logIn"/>
-        {{ username }}
       </div>
 
       <div v-if='navState === "sobertest"'>
