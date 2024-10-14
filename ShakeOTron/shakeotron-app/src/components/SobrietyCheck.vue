@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>Sobriety-check</h2>
+        <h1>Sobriety-check</h1>
         <p v-if="gamestarted">Press the button when it turns green</p>
     
 
@@ -73,3 +73,9 @@ export default {
     }
 }
 </script>
+
+<style scoped> 
+button{
+    margin: 5px;
+}
+</style>

@@ -1,9 +1,12 @@
 <template>
+    <div id="textA">
+        <h1>Account / Settings</h1>
+    </div>
     <div id="account-container">
         <div id="left-container">
             <div>
             <p>Username: {{ username }}</p>
-            <input type="text" placeholder="change username">
+            
             </div>
             
             <div>
@@ -11,7 +14,9 @@
             </div>
             
             <p>Your favourite cocktail is: </p>
-            <p>{{ favCocktail }}</p>
+            <p>{{ favCocktail }}</p> <br>
+            <input type="text" placeholder="change username"> <br> <br>
+            <input type="text" placeholder="change favourite cocktail">
         </div>
         <div id="right-container">
             <button @click="logout">Logout</button>
@@ -64,7 +69,8 @@ li {
     justify-content: space-between;
 }
 #left-container{
-    padding: 15px;
+    margin-top: 60px;
+    margin-left: 33%;
 }
 button {
     margin-top: 20px;
@@ -74,6 +80,8 @@ button {
     display: flex;
     flex-direction: column;
     align-items: end;
+    margin-right: 33%;
+    margin-top: 60px;
     justify-content: center;
 }
 

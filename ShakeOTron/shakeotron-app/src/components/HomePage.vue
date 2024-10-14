@@ -43,6 +43,5 @@ h2 {
 }
 div {
     margin-bottom: 80px;
-    style: flex;
 }
 </style>
