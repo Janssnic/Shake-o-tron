@@ -1,4 +1,5 @@
 <template>
+  <div id="page-container">
   <div class="radioMeny">
     <div class="radioItem">
       <input type="radio" id="vodka" value="Vodka" v-model="searchQuery" @change="searchDrinks">
@@ -112,6 +113,7 @@
     </li>
   </ul>
 </div>
+</div>
 </template>
 
 <script>
@@ -121,7 +123,8 @@ export default {
       drinks: [],
       searchQuery: '',
       SpecDrink: [],
-      selectedDrinkId: null, 
+      selectedDrinkId: null,
+      meny: true, 
     };
   },
   emits: ['likedDrink', 'testedDrink'],
@@ -163,6 +166,12 @@ export default {
 </script>
 
 <style scoped>
+
+#page-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 div input {
   margin: 0;
 }
@@ -192,13 +201,13 @@ li {
 }
 .radioMeny {
   position: fixed;
-  top: 0;
-  left: 0;
+  left: 0px;
   width: 200px;
   height: 100vh;
   background-color: #f0f0f0; 
   padding: 20px;
-  border-right: 1px solid #ddd; 
+  border-right: 1px solid #ddd;
+  
 }
 
 .radioItem {
