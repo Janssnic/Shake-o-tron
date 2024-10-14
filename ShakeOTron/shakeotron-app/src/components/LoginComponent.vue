@@ -107,9 +107,7 @@ import SignUpComponent from './SignUpComponent.vue';
     justify-content: space-evenly;
     align-items: center;
    }
-   button {
-    
-   }
+  
    #signUpLink{
     color: #0080ff;
     cursor: pointer;
