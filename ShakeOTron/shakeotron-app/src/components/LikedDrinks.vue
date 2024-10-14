@@ -149,6 +149,7 @@ export default {
 .selectButton {
   padding: 15px;
   padding-bottom: 0px;
+  margin-top: 21.44px;
 }
 
 </style>

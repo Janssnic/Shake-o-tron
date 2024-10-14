@@ -22,14 +22,6 @@
             </div>
             
             <p>Your favourite cocktail is: </p>
-<<<<<<< HEAD
-            <p>{{ favCocktail }}</p> <br>
-            <input type="text" placeholder="change username"> <br> <br>
-            <input type="text" placeholder="change favourite cocktail">
-        </div>
-        <div id="right-container">
-            <button @click="logout">Logout</button>
-=======
             <p id="favourite-cocktail">{{ favCocktail }}</p>
             <div v-if="editingProfile">
             <input type="text" placeholder="new favourite?" v-model="newFavCocktail">
@@ -50,7 +42,6 @@
             </div>
             <div id="right-container">
             <button @click="logout" id="logout-button">Logout</button>
->>>>>>> f27642faf73a152a59c171d407dfbe1efd5801f8
             <SettingsPage/>
         </div>
     </div>
@@ -178,20 +169,12 @@ li {
     align-items: baseline;
 }
 #left-container{
-<<<<<<< HEAD
     margin-top: 60px;
     margin-left: 33%;
 }
 button {
     margin-top: 20px;
     margin-right: 50px;
-=======
-    padding: 15px;
-    margin-left: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: baseline
->>>>>>> f27642faf73a152a59c171d407dfbe1efd5801f8
 }
 #right-container {
     display: flex;
