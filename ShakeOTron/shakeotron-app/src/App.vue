@@ -52,7 +52,7 @@ export default {
   },
   data() {
     return {
-      isLoggedIn: true, //true = alltid loggad in och skippa login step, FIX LATER
+      isLoggedIn: false, //true = alltid loggad in och skippa login step, FIX LATER
       username: '',
       navState: 'home',
     }
