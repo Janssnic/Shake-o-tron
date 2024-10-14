@@ -68,7 +68,7 @@
     <div class="radioItem">  
         <input type="radio" id="Amaretto" value="Amaretto" v-model="searchQuery" @change="searchDrinks">
       <label for="Amaretto">Amaretto </label>
-    </div>  
+    </div>
     </div>
   <div class="drinkContainer">
   <ul>
@@ -207,7 +207,6 @@ li {
   background-color: #f0f0f0; 
   padding: 20px;
   border-right: 1px solid #ddd;
-  
 }
 
 .radioItem {
