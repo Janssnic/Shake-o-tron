@@ -1,13 +1,18 @@
 <template>
 
-  <SelectButton class="selectButton" :options="viewOptions" v-model="selectedView" optionLabel="label" optionValue="value"></SelectButton>
+  <SelectButton class="selectButton" :options="viewOptions" v-model="selectedView" optionLabel="label"
+    optionValue="value"></SelectButton>
   <div v-if='selectedView === "liked"'>
     <h2>Liked drinks!</h2>
     <ul>
       <li v-for="drink in likedDrinks" :key="drink.idDrink">
-        {{ drink.strDrink }}
+        <div class="drink-name">
+          <h3>{{ drink.strDrink }}</h3>
+        </div>
         <img :src="drink.strDrinkThumb" alt="Drink image">
-        <PrimeButton class="red-button" label="Dislike" severity="danger" aria-label="Cancel" @click="removeDrink(drink)"></PrimeButton>
+        <div>
+          <PrimeButton class="red-button" label="Dislike" severity="danger" aria-label="Cancel" @click="removeDrink(drink)"></PrimeButton>
+        </div>
       </li>
     </ul>
   </div>
@@ -16,9 +21,13 @@
     <h2>Tested drinks!</h2>
     <ul>
       <li v-for="drink in testedDrinks" :key="drink.idDrink">
-        {{ drink.strDrink }}
+        <div class="drink-name">
+          <h3>{{ drink.strDrink }}</h3>
+        </div>
         <img :src="drink.strDrinkThumb" alt="Drink image">
-        <PrimeButton class="green-button" label="Like" severity="success" aria-label="Cancel" @click="addLikedDrink(drink)"></PrimeButton>
+        <div>
+          <PrimeButton class="green-button" label="Like" severity="success" aria-label="Cancel" @click="addLikedDrink(drink)"></PrimeButton>
+        </div>
       </li>
     </ul>
   </div>
@@ -152,4 +161,8 @@ export default {
   margin-top: 21.44px;
 }
 
+.drink-name {
+  padding: 20px;
+  padding-bottom: 0px;
+}
 </style>
