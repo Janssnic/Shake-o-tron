@@ -6,13 +6,9 @@
         <div id="left-container">
             <h2 @click="editProfile">Profile{{profile}}</h2>
             <p>Username: {{ username }}</p>
-<<<<<<< HEAD
-            
-=======
             <div v-if="editingProfile">
             <input type="text" placeholder="change username" v-model="newUsername">
             <button @click="changeUsername">save</button>
->>>>>>> f27642faf73a152a59c171d407dfbe1efd5801f8
             </div>
             
             <p>Email: {{ email }}</p>
