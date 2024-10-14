@@ -1,34 +1,36 @@
 <template>
     <div id="account-container">
         <div id="left-container">
-            <h2>Profile</h2>
+            <h2 @click="editProfile">Profile{{profile}}</h2>
             <p>Username: {{ username }}</p>
-            <div>
-            <input type="text" placeholder="change username">
-            <button>save</button>
+            <div v-if="editingProfile">
+            <input type="text" placeholder="change username" v-model="newUsername">
+            <button @click="changeUsername">save</button>
             </div>
             
             <p>Email: {{ email }}</p>
-            <div>
-            <input type="text" placeholder="change email">
-            <button>save</button>
+            <div v-if="editingProfile">
+            <input type="email" placeholder="change email" v-model="newEmail">
+            <button @click="changeEmail">save</button>
             </div>
             
             <p>Your favourite cocktail is: </p>
             <p id="favourite-cocktail">{{ favCocktail }}</p>
-            <div>
-            <input type="text" placeholder="new favourite?">
-            <button>save</button>
+            <div v-if="editingProfile">
+            <input type="text" placeholder="new favourite?" v-model="newFavCocktail">
+            <button @click="changeFavCocktail">save</button>
             </div>
-            <p class="link" @click="passwordChange = !passwordChange">change password?</p>
+            <p class="link" @click="passwordChange = !passwordChange" v-if="!succes && editingProfile ">change password?</p>
+            <p class="succes" v-if="succes">Passoword changed successfully!</p>
             <div v-if="passwordChange" id="password-container">
                 <p>old password</p>
-                <input type="password" placeholder="old password">
+                <input type="password" placeholder="old password" v-model="oldPassword">
                 <p>new password</p>
-                <input type="password" placeholder="new password">
+                <input type="password" placeholder="new password" v-model="newPassword">
                 <p>confirm new password</p>
-                <input type="password" placeholder="confirm new password">
-                <button>save</button>
+                <input type="password" placeholder="confirm new password" v-model="confirmPassword">
+                <button @click="changePassword">save</button>
+                <p v-if="error" class="error">there was an error</p>
             </div>
             </div>
             <div id="right-container">
@@ -51,7 +53,20 @@
                 password: '',
                 email: '',
                 favCocktail: '',
-                passwordChange: true,
+                passwordChange: false,
+                oldPassword: '',
+                newPassword: '',
+                confirmPassword: '',
+                error: false,
+                succes: false,
+                newUsername: '',
+                newEmail: '',
+                newFavCocktail: '',
+                profile: '- click to edit',
+                editingProfile: false,
+
+
+
             }
         },
         mounted() {
@@ -69,8 +84,65 @@
             logout() {
                 this.$emit('logIn', false, "username?")
             },
+            editProfile() {
+                if (this.editingProfile == false) {
+                    this.editingProfile = true;
+                    this.profile = '- click to stop editing';
+                }
+                else {
+                    this.editingProfile = false;
+                    this.profile = '- click to edit'
+                }
+            },
             changePassword() {
-
+                if (this.oldPassword == this.password && this.newPassword == this.confirmPassword) {
+                    this.password = this.newPassword
+                    let user = [this.username, this.email, this.password, this.favCocktail]
+                    let userData = JSON.stringify(user)
+                    localStorage.setItem('user', userData)
+                    this.passwordChange = !this.passwordChange
+                    this.oldPassword = ''
+                    this.newPassword = ''
+                    this.confirmPassword = ''
+                    this.succes = true
+                    setTimeout(() => {
+                        this.succes = false
+                        }, 5000)
+                    }
+                
+                else {
+                    this.displayError()
+                }
+            },
+            changeUsername() {
+                if (this.newUsername.trim() !== '' ) {
+                    this.username = this.newUsername
+                    let user = [this.username, this.email, this.password, this.favCocktail]
+                    let userData = JSON.stringify(user)
+                    localStorage.setItem('user', userData)
+                    }
+            },
+            changeEmail() {
+                if(this.newEmail.includes("@")) {
+                    this.email = this.newEmail
+                    let user = [this.username, this.email, this.password, this.favCocktail]
+                    let userData = JSON.stringify(user)
+                    localStorage.setItem('user', userData)
+                }
+            },
+            changeFavCocktail() {
+                if(this.newFavCocktail.trim() !== '') {
+                    this.favCocktail = this.newFavCocktail
+                    let user = [this.username, this.email, this.password, this.favCocktail]
+                    let userData = JSON.stringify(user)
+                    localStorage.setItem('user', userData)
+                }
+            },  
+            displayError() {
+                this.error = true
+                setTimeout(() => {
+                    this.error = false
+                }, 5000)
             }
         }
     }
@@ -92,6 +164,9 @@ li {
 #left-container{
     padding: 15px;
     margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline
 }
 #right-container {
     display: flex;
@@ -120,6 +195,13 @@ input {
 #left-container p {
     margin: 5px;
     width: fit-content;
+}
+.succes {
+    color: green;
+}
+h2:hover {
+    color: #0080ff;
+    cursor: pointer;
 }
 
 
