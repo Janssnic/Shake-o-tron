@@ -6,20 +6,20 @@
         <div id="left-container">
             <h2 @click="editProfile">Profile{{profile}}</h2>
             <p>Username: {{ username }}</p>
-            <div v-if="editingProfile">
+            <div v-if="editingProfile" class="input-container">
             <input type="text" placeholder="change username" v-model="newUsername">
             <button @click="changeUsername">save</button>
             </div>
             
             <p>Email: {{ email }}</p>
-            <div v-if="editingProfile">
+            <div v-if="editingProfile" class="input-container">
             <input type="email" placeholder="change email" v-model="newEmail">
             <button @click="changeEmail">save</button>
             </div>
             
             <p>Your favourite cocktail is: </p>
             <p id="favourite-cocktail">{{ favCocktail }}</p>
-            <div v-if="editingProfile">
+            <div v-if="editingProfile" class="input-container">
             <input type="text" placeholder="new favourite?" v-model="newFavCocktail">
             <button @click="changeFavCocktail">save</button>
             </div>
@@ -168,10 +168,7 @@ li {
     margin-top: 60px;
     margin-left: 33%;
 }
-button {
-    margin-top: 20px;
-    margin-right: 50px;
-}
+
 #right-container {
     display: flex;
     flex-direction: column;
@@ -196,7 +193,10 @@ input {
 #password-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: baseline;
+}
+#password-container, input {
+    margin-bottom: 10px;
 }
 #left-container p {
     margin: 5px;
@@ -208,6 +208,11 @@ input {
 h2:hover {
     color: #0080ff;
     cursor: pointer;
+}
+.input-container {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 20px;
 }
 
 
